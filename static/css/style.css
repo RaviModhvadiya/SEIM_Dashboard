@@ -1,4 +1,13 @@
-body {
-    font-family:Arial, Helvetica, sans-serif;
+body{
+
+    background:#f4f7fb;
+
 }
 
+.card{
+
+    border-radius:18px;
+
+    margin-top:80px;
+
+}

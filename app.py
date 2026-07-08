@@ -1,12 +1,19 @@
 from flask import Flask
 
+from config import Config
+from models import db
+from routes.home import home
+
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return "<h1>Mini SEIM Dashboard</h1><p>Phase 1 Setup Successful</p>"
+app.config.from_object(Config)
 
-if __name__ == '__main__':
+db.init_app(app)
+
+app.register_blueprint(home)
+
+if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
+
     app.run(debug=True)
-
-    
