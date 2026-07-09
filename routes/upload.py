@@ -1,3 +1,4 @@
+from cmath import log
 import os
 
 from flask import Blueprint
@@ -15,6 +16,7 @@ from werkzeug.utils import secure_filename
 
 from models import db
 from models.log import Log
+from services.log_parser import parse_csv
 
 upload = Blueprint(
     "upload",
@@ -76,6 +78,13 @@ def upload_log():
             db.session.add(log)
 
             db.session.commit()
+
+            rows = parse_csv(filepath, log.id)
+
+            flash(
+                f"{rows} log entries imported successfully!",
+                "success"
+                )
 
             flash(
                 "Log uploaded successfully!",

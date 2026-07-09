@@ -13,6 +13,8 @@ from routes.auth import auth
 from routes.dashboard import dashboard
 from routes.upload import upload
 
+from models.log_entry import LogEntry
+
 app = Flask(__name__)
 
 app.config.from_object(Config)

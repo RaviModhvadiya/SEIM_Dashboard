@@ -29,3 +29,26 @@ CREATE TABLE logs (
         REFERENCES users(id)
         ON DELETE CASCADE
 );
+
+USE SEIM_db;
+
+CREATE TABLE log_entries (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    log_id INT NOT NULL,
+
+    event_time DATETIME NULL,
+
+    event_level VARCHAR(50),
+
+    source VARCHAR(100),
+
+    message TEXT,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (log_id)
+        REFERENCES logs(id)
+        ON DELETE CASCADE
+);
