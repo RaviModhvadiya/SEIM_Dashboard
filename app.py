@@ -14,6 +14,13 @@ from routes.dashboard import dashboard
 from routes.upload import upload
 
 from models.log_entry import LogEntry
+from models.alert import Alert
+
+from routes.dashboard import dashboard
+
+from routes.alerts import alerts
+from routes.logs import logs
+from routes.reports import reports
 
 app = Flask(__name__)
 
@@ -30,12 +37,12 @@ def load_user(user_id):
 
 
 app.register_blueprint(home)
-
 app.register_blueprint(auth)
-
 app.register_blueprint(dashboard)
-
 app.register_blueprint(upload)
+app.register_blueprint(alerts)
+app.register_blueprint(logs)
+app.register_blueprint(reports)
 
 if __name__ == "__main__":
 

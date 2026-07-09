@@ -52,3 +52,34 @@ CREATE TABLE log_entries (
         REFERENCES logs(id)
         ON DELETE CASCADE
 );
+
+USE SEIM_db;
+
+CREATE TABLE alerts (
+
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    log_entry_id INT NOT NULL,
+
+    alert_type VARCHAR(100),
+
+    severity ENUM(
+        'Low',
+        'Medium',
+        'High',
+        'Critical'
+    ),
+
+    description TEXT,
+
+    status ENUM(
+        'Open',
+        'Resolved'
+    ) DEFAULT 'Open',
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (log_entry_id)
+        REFERENCES log_entries(id)
+        ON DELETE CASCADE
+);
