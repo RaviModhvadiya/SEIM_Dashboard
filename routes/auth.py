@@ -9,6 +9,12 @@ from werkzeug.security import generate_password_hash
 from models import db
 from models.user import User
 
+from flask_login import login_user
+from flask_login import logout_user
+from flask_login import current_user
+
+from werkzeug.security import check_password_hash
+
 auth = Blueprint(
     "auth",
     __name__,
@@ -78,3 +84,55 @@ def register():
         return redirect(url_for("home.index"))
 
     return render_template("auth/register.html")
+
+@auth.route("/login", methods=["GET", "POST"])
+def login():
+
+    if current_user.is_authenticated:
+        return redirect(url_for("dashboard.home"))
+
+    if request.method == "POST":
+
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(
+            username=username
+        ).first()
+
+        if user and check_password_hash(
+            user.password,
+            password
+        ):
+
+            login_user(user)
+
+            flash(
+                "Login Successful!",
+                "success"
+            )
+
+            return redirect(
+                url_for("dashboard.home")
+            )
+
+        flash(
+            "Invalid Username or Password",
+            "danger"
+        )
+
+    return render_template("auth/login.html")
+
+@auth.route("/logout")
+def logout():
+
+    logout_user()
+
+    flash(
+        "Logged Out Successfully",
+        "success"
+    )
+
+    return redirect(
+        url_for("home.index")
+    )
