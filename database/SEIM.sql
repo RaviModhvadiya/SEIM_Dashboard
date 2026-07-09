@@ -9,3 +9,23 @@ CREATE TABLE users (
     role ENUM('Admin','Analyst','User') DEFAULT 'User',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+USE SEIM_db;
+
+CREATE TABLE logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    filename VARCHAR(255) NOT NULL,
+
+    log_type VARCHAR(50) NOT NULL,
+
+    uploaded_by INT NOT NULL,
+
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    status ENUM('Uploaded','Parsed') DEFAULT 'Uploaded',
+
+    FOREIGN KEY(uploaded_by)
+        REFERENCES users(id)
+        ON DELETE CASCADE
+);

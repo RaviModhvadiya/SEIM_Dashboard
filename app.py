@@ -5,12 +5,13 @@ from config import Config
 from models import db
 from models import login_manager
 
+from models.user import User
+from models.log import Log
+
 from routes.home import home
 from routes.auth import auth
 from routes.dashboard import dashboard
-
-from models.user import User
-
+from routes.upload import upload
 
 app = Flask(__name__)
 
@@ -32,6 +33,7 @@ app.register_blueprint(auth)
 
 app.register_blueprint(dashboard)
 
+app.register_blueprint(upload)
 
 if __name__ == "__main__":
 
