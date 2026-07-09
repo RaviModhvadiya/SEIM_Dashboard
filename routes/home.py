@@ -4,4 +4,4 @@ home = Blueprint("home", __name__)
 
 @home.route("/")
 def index():
-    return redirect(url_for("dashboard.dashboard_home"))
+    return redirect(url_for("dashboard.dashboard"))

@@ -1,35 +1,95 @@
-{% extends 'base.html' %}
+<h1 class="mb-4">Welcome Back 👋</h1>
 
-{% block content %}
+<div class="row">
 
-<h2 class="mb-4">
+    <div class="col-md-3 mb-4">
+        <div class="card shadow bg-primary text-white">
+            <div class="card-body text-center">
+                <h5>Total Logs</h5>
+                <h2>{{ total_logs }}</h2>
+            </div>
+        </div>
+    </div>
 
-Welcome Back 👋
+    <div class="col-md-3 mb-4">
+        <div class="card shadow bg-success text-white">
+            <div class="card-body text-center">
+                <h5>Log Entries</h5>
+                <h2>{{ total_log_entries }}</h2>
+            </div>
+        </div>
+    </div>
 
-</h2>
+    <div class="col-md-3 mb-4">
+        <div class="card shadow bg-warning text-dark">
+            <div class="card-body text-center">
+                <h5>Total Alerts</h5>
+                <h2>{{ total_alerts }}</h2>
+            </div>
+        </div>
+    </div>
 
-<div class="card p-5">
-
-<h4>
-
-Mini SIEM Dashboard
-
-</h4>
-
-<hr>
-
-<p>
-
-Security Information and Event Management System
-
-</p>
-
-<p>
-
-Built using Flask + MySQL
-
-</p>
+    <div class="col-md-3 mb-4">
+        <div class="card shadow bg-danger text-white">
+            <div class="card-body text-center">
+                <h5>Critical Alerts</h5>
+                <h2>{{ critical_alerts }}</h2>
+            </div>
+        </div>
+    </div>
 
 </div>
 
-{% endblock %}
+<div class="row">
+
+    <div class="col-md-6">
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header">
+                System Information
+            </div>
+
+            <div class="card-body">
+
+                <p><strong>Users :</strong> {{ total_users }}</p>
+
+                <p><strong>Uploaded Log Files :</strong> {{ total_logs }}</p>
+
+                <p><strong>Total Log Entries :</strong> {{ total_log_entries }}</p>
+
+                <p><strong>Total Alerts :</strong> {{ total_alerts }}</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card shadow mb-4">
+
+            <div class="card-header">
+                Mini SIEM
+            </div>
+
+            <div class="card-body">
+
+                <p>✔ Flask Framework</p>
+
+                <p>✔ MySQL Database</p>
+
+                <p>✔ CSV Log Parsing</p>
+
+                <p>✔ Alert Detection</p>
+
+                <p>✔ User Authentication</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

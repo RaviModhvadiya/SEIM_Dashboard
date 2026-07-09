@@ -10,7 +10,7 @@ from models.log import Log
 
 from routes.home import home
 from routes.auth import auth
-from routes.dashboard import dashboard
+from routes.dashboard import dashboard_bp
 from routes.upload import upload
 
 from models.log_entry import LogEntry
@@ -38,7 +38,7 @@ def load_user(user_id):
 
 app.register_blueprint(home)
 app.register_blueprint(auth)
-app.register_blueprint(dashboard)
+app.register_blueprint(dashboard_bp)
 app.register_blueprint(upload)
 app.register_blueprint(alerts)
 app.register_blueprint(logs)
