@@ -30,6 +30,12 @@ padding:20px;
 
 }
 
+.sidebar.collapsed{
+	transform: translateX(-260px);
+	transition: transform .25s ease-in-out;
+	z-index:1040;
+}
+
 .logo{
 
 margin-bottom:40px;
@@ -74,6 +80,10 @@ width:100%;
 
 }
 
+.content.fullwidth{
+	margin-left:0;
+}
+
 .topbar{
 
 height:70px;
@@ -88,6 +98,13 @@ padding-left:25px;
 
 box-shadow:0 5px 15px rgba(0,0,0,.4);
 
+}
+
+/* responsive tweaks */
+@media (max-width: 991px) {
+	.sidebar{ transform: translateX(-260px); }
+	.sidebar.collapsed{ transform: translateX(0); }
+	.content{ margin-left:0; }
 }
 
 .card{
